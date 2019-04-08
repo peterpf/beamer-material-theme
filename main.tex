@@ -1,0 +1,53 @@
+\documentclass{beamer}
+\usepackage[utf8x]{inputenc}
+\usepackage{multicol}
+\usepackage[sfdefault]{roboto}
+
+\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+\usepackage{listings}
+
+\title{Material Design}
+\date{\today}
+\author{Peter Pfaffeneder}
+
+\usetheme{material}
+
+\setBackgroundColors{black}{grey-300}{grey-100}{grey-50}{white}
+
+% Use this to override the default primary color (light-blue-500)
+\setPrimaryColor{light-blue-500}
+\setSecondaryColor{grey-50}
+%\setPrimaryColor{light-blue-500}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}{Key Features}{This is a subtitle}
+
+	\begin{itemize}
+		\item Automaticaly determines contrast of text-color
+		\item Follows material design guidelines
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Usage}
+	\begin{itemize}
+		\item Available colors are listed in $material\_colors.sty$
+		\item Set background color
+	\end{itemize}
+\end{frame}
+
+
+\begin{verbatim}
+	\setPrimaryColor{light-blue-50}
+\end{verbatim}
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

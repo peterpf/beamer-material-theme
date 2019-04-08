@@ -1,0 +1,89 @@
+\mode<presentation>
+
+% Import colors
+\usepackage{material_colors}
+
+% Requirements
+\RequirePackage{tikz}
+\RequirePackage{ifthen}
+\RequirePackage{xcolor, etoolbox, xstring}
+\RequirePackage[many]{tcolorbox}
+\RequirePackage{hyperref}
+
+% Settings
+\useinnertheme{material}
+\useoutertheme{material}
+\usecolortheme{material}
+
+% Defines a primary color and automatically calculates
+% 'primary-light-color', 'primary-dark-color', 'primary-text-color'
+\newcommand{\setPrimaryColor}[1]{
+	\colorlet{primary-color}{#1}
+	\colorlet{primary-color-light}{#1!40}
+	\colorlet{primary-dark-color}{#1!40!black}
+
+	% TODO: Create command for determining contrast-color
+	% Calculate the text-color depending on the background (either black or white)
+	\colorlet{grayScaleColor}[gray]{#1}
+	\extractcolorspecs{grayScaleColor}{\modelspec}{\grayscale} % Convert RGB to GrayScale (0 - dark, 1-bright)
+
+	\StrBehind[1]{\grayscale}{0.}[\nbrstring] % Create substring -> all after 0.XXXX
+	\StrLeft{\nbrstring}{1}[\nbr] % Get the first character from the left
+	% Define threshold for luminosity of a color
+	\ifnumcomp{\nbr}{>}{5}{
+		% brighter color -> dark text
+		\colorlet{primary-text-color}{black}
+	}{
+		% darker color -> bright text
+		\colorlet{primary-text-color}{white}
+	}
+}
+
+\newcommand{\setSecondaryColor}[1]{
+	\colorlet{secondary-color}{#1}
+	\colorlet{secondary-color-light}{#1!40}
+	\colorlet{secondary-dark-color}{#1!40!black}
+
+	% TODO: Create command for determining contrast-color
+	% Calculate the text-color depending on the background (either black or white)
+	\colorlet{grayScaleColor}[gray]{#1}
+	\extractcolorspecs{grayScaleColor}{\modelspec}{\grayscale} % Convert RGB to GrayScale (0 - dark, 1-bright)
+
+	\StrBehind[1]{\grayscale}{0.}[\nbrstring] % Create substring -> all after 0.XXXX
+	\StrLeft{\nbrstring}{1}[\nbr] % Get the first character from the left
+	% Define threshold for luminosity of a color
+	\ifnumcomp{\nbr}{>}{5}{
+		% brighter color -> dark text
+		\colorlet{secondary-text-color}{black}
+	}{
+		% darker color -> bright text
+		\colorlet{secondary-text-color}{white}
+	}
+}
+
+\newcommand{\setAccentColor}[1]{
+	\colorlet{accent-color}{#1}
+}
+
+% light theme: [black][grey-300][grey-100][grey-50][white]
+% dark theme: [black][black][grey-900][grey-800][grey-700]
+\newcommand{\setBackgroundColors}[5]{
+  \colorlet{shadow}{#1}
+  \colorlet{bgcolor-01}{#2}
+  \colorlet{bgcolor-02}{#3}
+  \colorlet{bgcolor-03}{#4}
+  \colorlet{bgcolor-04}{#5}
+}
+
+% Default colors
+\setPrimaryColor{light-blue-500}
+
+% Customize list appearance
+\newcommand{\myitem}{\item[\textcolor{primary-text-color}\textbullet]}
+
+% Style hyperlinks
+\hypersetup{%
+  colorlinks = true,
+  linkcolor  = primary-text-color
+}
+\mode<all>
