@@ -1,24 +1,37 @@
 \documentclass{beamer}
-\usepackage[utf8x]{inputenc}
-\usepackage{multicol}
-\usepackage[sfdefault]{roboto}
 
+% ~~~~~~~~~~~~~~~~~~~~~
+% ~ Required packages ~
+% ~~~~~~~~~~~~~~~~~~~~~
+
+% Theme
+\usepackage{beamerthemematerial}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[sfdefault]{roboto}
 \usepackage[T1]{fontenc}
-%\usepackage{lmodern}
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~
+% ~ Additional packages ~
+% ~~~~~~~~~~~~~~~~~~~~~~~
+\usepackage{csquotes}
+\usepackage{tikz}
 \usepackage{listings}
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~
+% ~ Theme configuration ~
+% ~~~~~~~~~~~~~~~~~~~~~~~
+% Available colors are listed in material_colors.sty
+\setBackgroundColors{black}{grey-300}{grey-100}{grey-50}{white}
+\setPrimaryColor{light-blue-500}
+\setSecondaryColor{grey-50}
+
 
 \title{Material Design}
 \date{\today}
 \author{Peter Pfaffeneder}
-
-\usetheme{material}
-
-\setBackgroundColors{black}{grey-300}{grey-100}{grey-50}{white}
-
-% Use this to override the default primary color (light-blue-500)
-\setPrimaryColor{light-blue-500}
-\setSecondaryColor{grey-50}
-%\setPrimaryColor{light-blue-500}
 
 \begin{document}
 
@@ -44,10 +57,14 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}[fragile=singleslide]{Code}
+	\begin{lstlisting}
+	def someFunction(x):
+		return x*2
 
-\begin{verbatim}
-	\setPrimaryColor{light-blue-50}
-\end{verbatim}
+	someFunction(2)
+	\end{lstlisting}
+\end{frame}
 
 \end{document}
 %%% Local Variables:
