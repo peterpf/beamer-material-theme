@@ -27,18 +27,36 @@
 \setBackgroundColors{black}{grey-300}{grey-100}{grey-50}{white}
 \setPrimaryColor{light-blue-500}
 \setSecondaryColor{grey-50}
+\setAccentColor{light-blue-A100}
 
 
 \title{Material Design}
 \date{\today}
 \author{Peter Pfaffeneder}
+\institute[Technische Mathematik]
+
 
 \begin{document}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~
+% ~ Presentation slides ~
+% ~~~~~~~~~~~~~~~~~~~~~~~
 
 \begin{frame}
 	\titlepage
 \end{frame}
 
+{
+	% Link colors are rendered with `AccentColor'
+	% Change the AccentColor temporarily to match the background
+	\setAccentColor{secondary-text-color}
+	\begin{frame}{Overview}
+		\tableofcontents
+	\end{frame}
+}
+
+
+\section{Features}
 \begin{frame}{Key Features}{This is a subtitle}
 
 	\begin{itemize}
@@ -50,6 +68,8 @@
 	\end{itemize}
 \end{frame}
 
+
+\subsection{Usage}
 \begin{frame}{Usage}
 	\begin{itemize}
 		\item Available colors are listed in $material\_colors.sty$
@@ -57,6 +77,7 @@
 	\end{itemize}
 \end{frame}
 
+\subsubsection{Code}
 \begin{frame}[fragile=singleslide]{Code}
 	\begin{lstlisting}
 	def someFunction(x):
@@ -64,6 +85,12 @@
 
 	someFunction(2)
 	\end{lstlisting}
+\end{frame}
+
+\section{Finish}
+\begin{frame}
+	\frametitle{Thanks!}
+	\centering{Thanks for all the fish!}
 \end{frame}
 
 \end{document}
