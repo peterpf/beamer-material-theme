@@ -75,8 +75,11 @@
   \colorlet{bgcolor-04}{#5}
 }
 
-% Default colors
+% Define default colors
+\setBackgroundColors{black}{grey-300}{grey-100}{grey-50}{white}
 \setPrimaryColor{light-blue-500}
+\setSecondaryColor{grey-50}
+\setAccentColor{light-blue-A100}
 
 % Customize list appearance
 \newcommand{\myitem}{\item[\textcolor{primary-text-color}\textbullet]}
@@ -84,6 +87,6 @@
 % Style hyperlinks
 \hypersetup{%
   colorlinks = true,
-  linkcolor  = primary-text-color
+  linkcolor  = accent-color
 }
 \mode<all>
