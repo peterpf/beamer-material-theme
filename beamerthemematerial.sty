@@ -1,19 +1,28 @@
 \mode<presentation>
 
-% Import colors
+% ~~~~~~~~~
+% ~ Theme ~
+% ~~~~~~~~~
 \usepackage{material_colors}
+\useinnertheme{material}
+\useoutertheme{material}
+\usecolortheme{material}
 
-% Requirements
+
+% ~~~~~~~~~~~~~~~~
+% ~ Requirements ~
+% ~~~~~~~~~~~~~~~~
 \RequirePackage{tikz}
 \RequirePackage{ifthen}
 \RequirePackage{xcolor, etoolbox, xstring}
 \RequirePackage[many]{tcolorbox}
 \RequirePackage{hyperref}
+\RequirePackage[absolute,overlay]{textpos} % For source/credits of pictures
 
-% Settings
-\useinnertheme{material}
-\useoutertheme{material}
-\usecolortheme{material}
+
+% ~~~~~~~~~~~~
+% ~ Commands ~
+% ~~~~~~~~~~~~
 
 % Defines a primary color and automatically calculates
 % 'primary-light-color', 'primary-dark-color', 'primary-text-color'
@@ -75,18 +84,23 @@
   \colorlet{bgcolor-04}{#5}
 }
 
-% Define default colors
+% Customize list appearance
+\newcommand{\myitem}{\item[\textcolor{primary-text-color}\textbullet]}
+
+% Add command to add source for pictures (credits)
+\newcommand{\source}[1]{\begin{textblock*}{4cm}(1cm,8.6cm)
+	\begin{beamercolorbox}[ht=0.5cm,left]{imagesource}
+			\usebeamerfont{imagesource}\usebeamercolor[fg]{imagesource} Source: {#1}
+	\end{beamercolorbox}
+\end{textblock*}}
+
+
+% ~~~~~~~~~~~~~~~~~~~~
+% ~ Default Settings ~
+% ~~~~~~~~~~~~~~~~~~~~
 \setBackgroundColors{black}{grey-300}{grey-100}{grey-50}{white}
 \setPrimaryColor{light-blue-500}
 \setSecondaryColor{grey-50}
 \setAccentColor{light-blue-A100}
 
-% Customize list appearance
-\newcommand{\myitem}{\item[\textcolor{primary-text-color}\textbullet]}
-
-% Style hyperlinks
-\hypersetup{%
-  colorlinks = true,
-  linkcolor  = accent-color
-}
 \mode<all>
