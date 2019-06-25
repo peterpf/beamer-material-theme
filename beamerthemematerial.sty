@@ -3,10 +3,11 @@
 % ~~~~~~~~~
 % ~ Theme ~
 % ~~~~~~~~~
-\usepackage{material_colors}
-\useinnertheme{material}
-\useoutertheme{material}
-\usecolortheme{material}
+  \usepackage{beamer-material-theme/material_colors}
+
+  \usepackage{beamer-material-theme/beamerinnerthemematerial}
+  \usepackage{beamer-material-theme/beamerouterthemematerial}
+  \usepackage{beamer-material-theme/beamercolorthemematerial}
 
 
 % ~~~~~~~~~~~~~~~~
@@ -25,11 +26,11 @@
 % ~~~~~~~~~~~~
 
 % Defines a primary color and automatically calculates
-% 'primary-light-color', 'primary-dark-color', 'primary-text-color'
+% 'primary-light-color', 'primary-color-dark', 'primary-color-text'
 \newcommand{\setPrimaryColor}[1]{
 	\colorlet{primary-color}{#1}
 	\colorlet{primary-color-light}{#1!40}
-	\colorlet{primary-dark-color}{#1!40!black}
+	\colorlet{primary-color-dark}{#1!40!black}
 
 	% TODO: Create command for determining contrast-color
 	% Calculate the text-color depending on the background (either black or white)
@@ -41,17 +42,17 @@
 	% Define threshold for luminosity of a color
 	\ifnumcomp{\nbr}{>}{5}{
 		% brighter color -> dark text
-		\colorlet{primary-text-color}{black}
+		\colorlet{primary-color-text}{black}
 	}{
 		% darker color -> bright text
-		\colorlet{primary-text-color}{white}
+		\colorlet{primary-color-text}{white}
 	}
 }
 
 \newcommand{\setSecondaryColor}[1]{
 	\colorlet{secondary-color}{#1}
 	\colorlet{secondary-color-light}{#1!40}
-	\colorlet{secondary-dark-color}{#1!40!black}
+	\colorlet{secondary-color-dark}{#1!40!black}
 
 	% TODO: Create command for determining contrast-color
 	% Calculate the text-color depending on the background (either black or white)
@@ -63,15 +64,16 @@
 	% Define threshold for luminosity of a color
 	\ifnumcomp{\nbr}{>}{5}{
 		% brighter color -> dark text
-		\colorlet{secondary-text-color}{black}
+		\colorlet{secondary-color-text}{black}
 	}{
 		% darker color -> bright text
-		\colorlet{secondary-text-color}{white}
+		\colorlet{secondary-color-text}{white}
 	}
 }
 
 \newcommand{\setAccentColor}[1]{
 	\colorlet{accent-color}{#1}
+	\setbeamercolor*{alerted text}{fg=accent-color,bg=}
 }
 
 % light theme: [black][grey-300][grey-100][grey-50][white]
@@ -85,7 +87,7 @@
 }
 
 % Customize list appearance
-\newcommand{\myitem}{\item[\textcolor{primary-text-color}\textbullet]}
+\newcommand{\myitem}{\item[\textcolor{primary-color-text}\textbullet]}
 
 % Add command to add source for pictures (credits)
 \newcommand{\source}[1]{\begin{textblock*}{4cm}(1cm,8.6cm)
@@ -102,5 +104,7 @@
 \setPrimaryColor{light-blue-500}
 \setSecondaryColor{grey-50}
 \setAccentColor{light-blue-A100}
+
+\setbeamercolor*{alerted text}{fg=accent-color,bg=}
 
 \mode<all>
