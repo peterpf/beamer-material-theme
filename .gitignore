@@ -19,3 +19,5 @@ _region_\.tex
 \.#main\.tex
 
 \#main\.tex#
+
+!src/images/*
