@@ -7,13 +7,15 @@ end
 
 OUTPUT_FILES = SOURCE_FILES.pathmap("build/%p")
 
-desc "Copying files to the output directory"
 task :default => :copy_files
 
 desc "Copy files to the output directory"
 task :copy_files do
-  # My code goes here
   SOURCE_FILES.each do |f|
     puts "File: #{f}"
   end
+end
+
+task :compile do
+  sh "latexmk src/main.tex"
 end

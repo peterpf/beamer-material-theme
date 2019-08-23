@@ -1,5 +1,9 @@
 # LaTeX Beamer Material Theme
 
+## Setup
+
+- `sudo apt-get install texlive-latex-extra latexmk`
+
 ## Include as git submodule
 
 Go to your working directory and clone the `beamer-material-theme` repository into the folder `beamer-material-theme`.
