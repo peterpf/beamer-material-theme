@@ -2,22 +2,14 @@
 
 ## Include as git submodule
 
-Go to your working directory and clone the `beamer-material-theme` repository into the folder `beamer-material-theme`.
-Then do following:
+Go to your working directory where the presenation should reside. Clone this repository into the folder `theme` and copy the `example.tex` file next to the `theme` folder.
+The structure should look like this:
 
-* Open `beamerthemematerial.sty` and replace
-  ```
-  \usepackage{material_colors}
+```bash
+.
+├── theme/
+├── example.tex
+├── ...
+```
 
-  \useinnertheme{material}
-  \useoutertheme{material}
-  \usecolortheme{material}
-  ```
-  with
-  ```
-  \usepackage{beamer-material-theme/material_colors}
-
-  \usepackage{beamer-material-theme/beamerinnerthemematerial}
-  \usepackage{beamer-material-theme/beamerouterthemematerial}
-  \usepackage{beamer-material-theme/beamercolorthemematerial}
-  ```
+The copied `example.tex` serves as the basis for your presentation and can be renamed.

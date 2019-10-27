@@ -5,12 +5,11 @@
 % ~~~~~~~~~~~~~~~~~~~~~
 
 % Theme
-\usepackage{beamerthemematerial}
+\usepackage{theme/beamerthemematerial}
 
 \usepackage[utf8x]{inputenc}
 \usepackage[sfdefault]{roboto}
 \usepackage[T1]{fontenc}
-\usepackage[absolute,overlay]{textpos} % Required for source below images
 
 
 % ~~~~~~~~~~~~~~~~~~~~~~~
@@ -19,7 +18,6 @@
 \usepackage{csquotes}
 \usepackage{tikz}
 \usepackage{listings}
-\usepackage{graphicx}
 
 
 % ~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,9 +57,7 @@
 
 
 \section{Features}
-\begin{frame}
-	\frametitle{Key Features}
-	\framesubtitle{Overview}
+\begin{frame}{Key Features}{This is a subtitle}
 
 	\begin{itemize}
 		\item Automaticaly determines contrast of text-color
@@ -74,8 +70,7 @@
 
 
 \subsection{Usage}
-\begin{frame}
-	\frametitle{Basic Usage}
+\begin{frame}{Usage}
 	\begin{itemize}
 		\item Available colors are listed in $material\_colors.sty$
 		\item Set background color
@@ -92,21 +87,8 @@
 	\end{lstlisting}
 \end{frame}
 
-\subsection{Images}
-\begin{frame}
-	\frametitle{Including Images}
-
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.8\textwidth]{images/tensorflow.pdf}
-		\source{Google.com}
-	\end{figure}
-
-\end{frame}
-
 \section{Finish}
-\begin{frame}
-	\frametitle{Thanks!}
+\begin{frame}{Thanks!}
 	\centering{Thanks for all the fish!}
 \end{frame}
 
