@@ -2,26 +2,28 @@
 
 ## Setup
 
-- `sudo apt-get install texlive-latex-extra latexmk`
+`sudo apt-get install texlive-latex-extra latexmk`
 
 ## Include as git submodule
 
-Go to your working directory and clone the `beamer-material-theme` repository into the folder `beamer-material-theme`.
+Go to your working directory and clone the `beamer-material-theme` repository into the folder `theme` with
+
+```bash
+git submodule add git@github.com:peterpf/beamer-material-theme.git theme
+```
+
 Then do following:
 
-* Open `beamerthemematerial.sty` and replace
-  ```
-  \usepackage{material_colors}
+- Copy the `example.tex` file from the `theme` folder to the same level as this folder:
 
-  \useinnertheme{material}
-  \useoutertheme{material}
-  \usecolortheme{material}
-  ```
-  with
-  ```
-  \usepackage{beamer-material-theme/material_colors}
+    ```bash
+    .
+    ├── theme
+    |   ├── src/
+    |   ├── dist/
+    |   ├── example.tex
+    ├── example.tex
+    ├── ...
+    ```
 
-  \usepackage{beamer-material-theme/beamerinnerthemematerial}
-  \usepackage{beamer-material-theme/beamerouterthemematerial}
-  \usepackage{beamer-material-theme/beamercolorthemematerial}
-  ```
+- Use the `example.tex` file as a starting point for our presentation.
