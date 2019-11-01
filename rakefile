@@ -1,21 +1,43 @@
-SOURCE_FILES = Rake::FileList.new("src/**/*") do |file|
+require 'rake'
+
+SOURCE_FILES = Rake::FileList.new("src/**/*.sty") do |file|
   file.exclude("~*")
   file.exclude do |f|
     `git ls-files #{f}`.empty?
   end
 end
 
-OUTPUT_FILES = SOURCE_FILES.pathmap("build/%p")
+OUTPUT_FILES = SOURCE_FILES.pathmap("dist/%p")
 
-task :default => :copy_files
+# Declare a rule for auto-tasks that have input and output in different directories
+#
+# Example:
+#  mv_rule 'obj/*.o' => 'src/*.c' do |t|
+#    sh "gcc -c #{t.source} -o #{t.name}"
+#
+# Source: https://stackoverflow.com/questions/33395361/how-to-process-inputs-and-outputs-in-separate-directories-in-rake
+def mv_rule(*args, &block) # :doc:
+  outFile, inFile = args[0].keys[0], args[0].values[0]
+  outExt = File.extname outFile
+  outDir = File.dirname outFile
+  inExt = File.extname inFile
+  inDir = File.dirname inFile
+  destPattern = Regexp.new("#{outDir}/.*\\#{outExt}")
+  srcPattern = ->(o){o.pathmap("%{^#{outDir}/,#{inDir}/}X#{inExt}")}
+  Rake::Task.create_rule(destPattern => [srcPattern, outDir], &block)
+end
 
-desc "Copy files to the output directory"
-task :copy_files do
+directory 'dist'
+
+mv_rule 'dist/*.sty' => 'src/*.sty' do |task|
+  cp task.source, task.name
+end
+
+task :all => SOURCE_FILES do |t|
   SOURCE_FILES.each do |f|
-    puts "File: #{f}"
+    targetFile = f.sub! 'src/', 'dist/'
+    Rake::Task[targetFile].invoke
   end
 end
 
-task :compile do
-  sh "latexmk src/main.tex"
-end
+task :default => [:all]
