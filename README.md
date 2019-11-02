@@ -49,3 +49,9 @@ rake default // The build task
 ```
 
 This copies the files in `src` into a `dist` folder and configures the theme accordingly.
+
+## Important Notes
+
+- Packages that should not be included
+  - `graphicx` or `graphics` as they are already included in beamer
+  - `transparency` as it messes with the tikz package's `fill opacity`
