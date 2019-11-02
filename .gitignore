@@ -20,3 +20,4 @@ _region_\.tex
 \#main\.tex#
 
 dist/
+config.json
