@@ -154,7 +154,6 @@ def set_config_map_color(color_name, color_value):
     config_map[color_name]['color'] = color_value
 
 def get_contrast_color(color, bright_color, dark_color):
-    print(f'luminance: {color.get_luminance()}')
     return bright_color if color.get_luminance() < 0.6 else dark_color
 
 
