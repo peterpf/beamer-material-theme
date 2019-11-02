@@ -14,77 +14,11 @@
 % ~ Requirements ~
 % ~~~~~~~~~~~~~~~~
 \RequirePackage{tikz}
-\RequirePackage{ifthen}
 \RequirePackage{xcolor, etoolbox, xstring}
 \RequirePackage[many]{tcolorbox}
 \RequirePackage{hyperref}
-\RequirePackage[absolute,overlay]{textpos} % For source/credits of pictures
+\RequirePackage[absolute, overlay]{textpos} % For source/credits of pictures
 
-
-% ~~~~~~~~~~~~
-% ~ Commands ~
-% ~~~~~~~~~~~~
-
-% Defines a primary color and automatically calculates
-% 'primary-light-color', 'primary-color-dark', 'primary-color-text'
-\newcommand{\setPrimaryColor}[1]{
-	\colorlet{primary-color}{#1}
-	\colorlet{primary-color-light}{#1!40}
-	\colorlet{primary-color-dark}{#1!40!black}
-
-	% TODO: Create command for determining contrast-color
-	% Calculate the text-color depending on the background (either black or white)
-	\colorlet{grayScaleColor}[gray]{#1}
-	\extractcolorspecs{grayScaleColor}{\modelspec}{\grayscale} % Convert RGB to GrayScale (0 - dark, 1-bright)
-
-	\StrBehind[1]{\grayscale}{0.}[\nbrstring] % Create substring -> all after 0.XXXX
-	\StrLeft{\nbrstring}{1}[\nbr] % Get the first character from the left
-	% Define threshold for luminosity of a color
-	\ifnumcomp{\nbr}{>}{5}{
-		% brighter color -> dark text
-		\colorlet{primary-color-text}{black}
-	}{
-		% darker color -> bright text
-		\colorlet{primary-color-text}{white}
-	}
-}
-
-\newcommand{\setSecondaryColor}[1]{
-	\colorlet{secondary-color}{#1}
-	\colorlet{secondary-color-light}{#1!40}
-	\colorlet{secondary-color-dark}{#1!40!black}
-
-	% TODO: Create command for determining contrast-color
-	% Calculate the text-color depending on the background (either black or white)
-	\colorlet{grayScaleColor}[gray]{#1}
-	\extractcolorspecs{grayScaleColor}{\modelspec}{\grayscale} % Convert RGB to GrayScale (0 - dark, 1-bright)
-
-	\StrBehind[1]{\grayscale}{0.}[\nbrstring] % Create substring -> all after 0.XXXX
-	\StrLeft{\nbrstring}{1}[\nbr] % Get the first character from the left
-	% Define threshold for luminosity of a color
-	\ifnumcomp{\nbr}{>}{5}{
-		% brighter color -> dark text
-		\colorlet{secondary-color-text}{black}
-	}{
-		% darker color -> bright text
-		\colorlet{secondary-color-text}{white}
-	}
-}
-
-\newcommand{\setAccentColor}[1]{
-	\colorlet{accent-color}{#1}
-	\setbeamercolor*{alerted text}{fg=accent-color,bg=}
-}
-
-% light theme: [black][grey-300][grey-100][grey-50][white]
-% dark theme: [black][black][grey-900][grey-800][grey-700]
-\newcommand{\setBackgroundColors}[5]{
-  \colorlet{shadow}{#1}
-  \colorlet{bgcolor-01}{#2}
-  \colorlet{bgcolor-02}{#3}
-  \colorlet{bgcolor-03}{#4}
-  \colorlet{bgcolor-04}{#5}
-}
 
 % Customize list appearance
 \newcommand{\myitem}{\item[\textcolor{primary-color-text}\textbullet]}
@@ -100,10 +34,23 @@
 % ~~~~~~~~~~~~~~~~~~~~
 % ~ Default Settings ~
 % ~~~~~~~~~~~~~~~~~~~~
-\setBackgroundColors{black}{grey-300}{grey-100}{grey-50}{white}
-\setPrimaryColor{light-blue-500}
-\setSecondaryColor{grey-50}
-\setAccentColor{light-blue-A100}
+
+\definecolor{primary-color}{HTML}{%PRIMARY_COLOR%}
+\definecolor{primary-color-light}{HTML}{%PRIMARY_COLOR_LIGHT%}
+\definecolor{primary-color-dark}{HTML}{%PRIMARY_COLOR_DARK%}
+\definecolor{primary-color-text}{HTML}{%PRIMARY_TEXT_COLOR%}
+\definecolor{secondary-color}{HTML}{%SECONDARY_COLOR%}
+\definecolor{secondary-color-light}{HTML}{%SECONDARY_COLOR_LIGHT%}
+\definecolor{secondary-color-dark}{HTML}{%SECONDARY_COLOR_DARK%}
+\definecolor{secondary-color-text}{HTML}{%SECONDARY_TEXT_COLOR%}
+\definecolor{accent-color}{HTML}{%ACCENT_COLOR%}
+
+\definecolor{shadow}{HTML}{%BACKGROUND_COLOR_SHADOW%}
+\definecolor{bgcolor-01}{HTML}{%BACKGROUND_COLOR_1%}
+\definecolor{bgcolor-02}{HTML}{%BACKGROUND_COLOR_2%}
+\definecolor{bgcolor-03}{HTML}{%BACKGROUND_COLOR_3%}
+\definecolor{bgcolor-04}{HTML}{%BACKGROUND_COLOR_4%}
+
 
 \setbeamercolor*{alerted text}{fg=accent-color,bg=}
 

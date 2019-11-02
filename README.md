@@ -27,3 +27,15 @@ Then do following:
     ```
 
 - Use the `example.tex` file as a starting point for our presentation.
+
+## Generating a theme
+
+The theme can be tuned via the `config.json` file.
+If the complementary colors are not set, they will be calculated based on their respective colors.
+To generate the theme for the given config, do:
+
+```bash
+rake default
+```
+
+This copies the files in `src` into a `dist` folder and configures the theme accordingly.

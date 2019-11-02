@@ -25,12 +25,6 @@
 % ~~~~~~~~~~~~~~~~~~~~~~~
 % ~ Theme configuration ~
 % ~~~~~~~~~~~~~~~~~~~~~~~
-% Available colors are listed in material_colors.sty
-\setBackgroundColors{black}{grey-300}{grey-100}{grey-50}{white}
-\setPrimaryColor{light-blue-500}
-\setSecondaryColor{grey-50}
-\setAccentColor{light-blue-A100}
-
 
 \title{Material Design}
 \date{\today}
@@ -51,7 +45,7 @@
 {
 	% Link colors are rendered with `AccentColor'
 	% Change the AccentColor temporarily to match the background
-	\setAccentColor{secondary-color-text}
+	\colorlet{accent-color}{secondary-color-text}
 	\begin{frame}{Overview}
 		\tableofcontents
 	\end{frame}

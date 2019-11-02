@@ -1,13 +1,17 @@
 require 'rake'
 
-SOURCE_FILES = Rake::FileList.new("src/**/*.sty") do |file|
-  file.exclude("~*")
+input_directory = 'src'
+output_directory = 'dist'
+
+SOURCE_FILES = Rake::FileList.new(File.join(input_directory, '**/*.sty')) do |file|
+  file.exclude('~*')
   file.exclude do |f|
     `git ls-files #{f}`.empty?
   end
 end
 
-OUTPUT_FILES = SOURCE_FILES.pathmap("dist/%p")
+OUTPUT_FILES = SOURCE_FILES.pathmap(File.join(output_directory, '/%p'))
+
 
 # Declare a rule for auto-tasks that have input and output in different directories
 #
@@ -27,17 +31,25 @@ def mv_rule(*args, &block) # :doc:
   Rake::Task.create_rule(destPattern => [srcPattern, outDir], &block)
 end
 
-directory 'dist'
+directory output_directory
 
-mv_rule 'dist/*.sty' => 'src/*.sty' do |task|
+mv_rule File.join(output_directory, '*.sty') => File.join(input_directory, '*.sty') do |task|
   cp task.source, task.name
 end
 
-task :all => SOURCE_FILES do |t|
+task :copy_files => SOURCE_FILES do |t|
   SOURCE_FILES.each do |f|
-    targetFile = f.sub! 'src/', 'dist/'
+    targetFile = f.sub! File.join(input_directory, '/'), File.join(output_directory, '/')
     Rake::Task[targetFile].invoke
   end
 end
 
-task :default => [:all]
+task :build_theme do
+  result = exec('python3 build_theme.py')
+end
+
+task :clean do
+  rm_rf output_directory
+end
+
+task :default => [:clean, :copy_files, :build_theme]
