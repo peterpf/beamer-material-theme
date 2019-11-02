@@ -5,11 +5,12 @@
 % ~~~~~~~~~~~~~~~~~~~~~
 
 % Theme
-\usepackage{theme/beamerthemematerial}
+\usepackage{theme/dist/beamerthemematerial}
 
 \usepackage[utf8x]{inputenc}
 \usepackage[sfdefault]{roboto}
 \usepackage[T1]{fontenc}
+\usepackage[absolute,overlay]{textpos} % Required for source below images
 
 
 % ~~~~~~~~~~~~~~~~~~~~~~~
@@ -18,17 +19,12 @@
 \usepackage{csquotes}
 \usepackage{tikz}
 \usepackage{listings}
+\usepackage{graphicx}
 
 
 % ~~~~~~~~~~~~~~~~~~~~~~~
 % ~ Theme configuration ~
 % ~~~~~~~~~~~~~~~~~~~~~~~
-% Available colors are listed in material_colors.sty
-\setBackgroundColors{black}{grey-300}{grey-100}{grey-50}{white}
-\setPrimaryColor{light-blue-500}
-\setSecondaryColor{grey-50}
-\setAccentColor{light-blue-A100}
-
 
 \title{Material Design}
 \date{\today}
@@ -49,7 +45,7 @@
 {
 	% Link colors are rendered with `AccentColor'
 	% Change the AccentColor temporarily to match the background
-	\setAccentColor{secondary-color-text}
+	\colorlet{accent-color}{secondary-color-text}
 	\begin{frame}{Overview}
 		\tableofcontents
 	\end{frame}
@@ -57,7 +53,9 @@
 
 
 \section{Features}
-\begin{frame}{Key Features}{This is a subtitle}
+\begin{frame}
+	\frametitle{Key Features}
+	\framesubtitle{Overview}
 
 	\begin{itemize}
 		\item Automaticaly determines contrast of text-color
@@ -70,7 +68,8 @@
 
 
 \subsection{Usage}
-\begin{frame}{Usage}
+\begin{frame}
+	\frametitle{Basic Usage}
 	\begin{itemize}
 		\item Available colors are listed in $material\_colors.sty$
 		\item Set background color
@@ -87,8 +86,21 @@
 	\end{lstlisting}
 \end{frame}
 
+\subsection{Images}
+\begin{frame}
+	\frametitle{Including Images}
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\textwidth]{theme/images/tensorflow.pdf}
+		\source{Google.com}
+	\end{figure}
+
+\end{frame}
+
 \section{Finish}
-\begin{frame}{Thanks!}
+\begin{frame}
+	\frametitle{Thanks!}
 	\centering{Thanks for all the fish!}
 \end{frame}
 
