@@ -3,10 +3,11 @@ import json
 import os
 from os import listdir
 from os.path import isfile, join
+from pathlib import Path
 from colour import Color
 
-__location__ = os.path.realpath(
-    os.path.join(os.getcwd(), os.path.dirname(__file__)))
+__location__ = os.path.realpath(os.getcwd())
+
 config_filepath = os.path.join(__location__, 'config.json')
 latex_source_filepath = os.path.join(__location__, 'dist')
 latex_source_files = [join(latex_source_filepath, f) for f in listdir(latex_source_filepath) if isfile(join(latex_source_filepath, f))]
@@ -73,9 +74,23 @@ config_map = {
     'backgroundColor4': {
         'color': None,
         'replace_string': '%BACKGROUND_COLOR_4%'
-    },
-    
+    }
 }
+
+def read_color_from_json(color_name):
+    hex_value = config[color_name]
+    if hex_value is None:
+        return None
+    return Color(str(hex_value))
+
+def get_config_map_color(color_name):
+    return config_map[color_name]['color']
+
+def get_config_map_color_replace_string(color_name):
+    return config_map[color_name]['replace_string']
+
+def set_config_map_color(color_name, color_value):
+    config_map[color_name]['color'] = color_value
 
 
 def hex_to_rgb(value):
@@ -85,15 +100,8 @@ def hex_to_rgb(value):
 def rgb_to_hex(r, g, b):
     return '#%02x%02x%02x' % (r, g, b)
 
-def rgb_brighten(r, g, b, percentage):
-    return (max(r + percentage, 255), max(g + percentage, 255), max(b + percentage, 255))
 
-def rgb_darken(r, g, b, percentage):
-    return (max(r - percentage, 0), max(g - percentage, 0), max(b - percentage, 0))
-
-
-''' Complement the colours in a RGB image 
-
+''' Complement the colours in a RGB image
     Written by PM 2Ring 2016.10.08
 '''
 # Sum of the min & max of (a, b, c)
@@ -129,6 +137,8 @@ def color_darken(color, percentage):
         max(b - p, 0) / 255)
         )
 
+def get_contrast_color(color, bright_color, dark_color):
+    return bright_color if color.get_luminance() < 0.6 else dark_color
 
 def replace_in_files(replace_text, replace_value):
     for source_file in latex_source_files:
@@ -138,31 +148,14 @@ def replace_in_files(replace_text, replace_value):
             #print('replacing ' + replace_text + ' w/ ' + replace_value)
             open(source_file, 'w').write(file_content.replace(replace_text, replace_value))
 
-# Check if first color is darker than second color
-saturation_equivalence = lambda c1, c2: c1.saturation < c2.saturation
-
-def read_color_from_config(color_name):
-    hex_value = config[color_name]
-    if hex_value is None:
-        return None
-    return Color(str(hex_value), equality=saturation_equivalence)
-
-def get_config_map_color(color_name):
-    return config_map[color_name]['color']
-
-def set_config_map_color(color_name, color_value):
-    config_map[color_name]['color'] = color_value
-
-def get_contrast_color(color, bright_color, dark_color):
-    return bright_color if color.get_luminance() < 0.6 else dark_color
-
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # ~ Read color values from json file ~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 for colorName, colorObject in config_map.items():
-    colorObject['color'] = read_color_from_config(colorName)
+    color_from_json = read_color_from_json(colorName)
+    set_config_map_color(colorName, color_from_json)
 
 primaryColor = get_config_map_color('primaryColor')
 primaryColorLight = get_config_map_color('primaryColorLight')
@@ -196,14 +189,11 @@ if secondaryTextColor is None:
     set_config_map_color('secondaryTextColor', get_contrast_color(secondaryColor, brightTextColor, darkTextColor))
 
 
-for colorName, colorObject in config_map.items():
+for colorName, _ in config_map.items():
     color = get_config_map_color(colorName)
-    replace_string = colorObject['replace_string']
+    replace_string = get_config_map_color_replace_string(colorName)
     if color is None:
-        print(f"The color '{colorName}' is still undefined")
-        raise("Exception")
-    # color_rgb = hex_to_rgb(color.hex.lstrip('#'))
-    # color_complement_rgb = complement(*color_rgb)
-    # color_complement_hex = rgb_to_hex(*color_complement_rgb)
-    # print(json_attribute_name + ' '+ color_complement_hex)
-    replace_in_files(replace_string, color.hex_l.lstrip('#'))
+        print(f"The color '{colorName}' is still undefined, skipping...")
+        continue
+    hex_numbers = color.hex_l.lstrip('#') # Must be only the numbers without the '#' for LaTEX
+    replace_in_files(replace_string, hex_numbers)

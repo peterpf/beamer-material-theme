@@ -2,7 +2,15 @@
 
 ## Setup
 
-`sudo apt-get install texlive-latex-extra latexmk`
+```bash
+sudo apt-get install texlive-latex-extra latexmk
+```
+
+This will install a full latex distribution. Additionally, `python3` and `pip3` are required, `pip3` can be installed with
+
+```bash
+sudo apt-get install python3-pip
+```
 
 ## Include as git submodule
 
