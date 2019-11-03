@@ -5,7 +5,7 @@
 % ~~~~~~~~~~~~~~~~~~~~~
 
 % Theme
-\usepackage{beamerthemematerial}
+\usepackage{theme/dist/beamerthemematerial}
 
 \usepackage[utf8x]{inputenc}
 \usepackage[sfdefault]{roboto}
@@ -19,18 +19,10 @@
 \usepackage{csquotes}
 \usepackage{tikz}
 \usepackage{listings}
-\usepackage{graphicx}
-
 
 % ~~~~~~~~~~~~~~~~~~~~~~~
 % ~ Theme configuration ~
 % ~~~~~~~~~~~~~~~~~~~~~~~
-% Available colors are listed in material_colors.sty
-\setBackgroundColors{black}{grey-300}{grey-100}{grey-50}{white}
-\setPrimaryColor{light-blue-500}
-\setSecondaryColor{grey-50}
-\setAccentColor{light-blue-A100}
-
 
 \title{Material Design}
 \date{\today}
@@ -51,14 +43,21 @@
 {
 	% Link colors are rendered with `AccentColor'
 	% Change the AccentColor temporarily to match the background
-	\setAccentColor{secondary-color-text}
+	\colorlet{accent-color}{secondary-color-text}
 	\begin{frame}{Overview}
 		\tableofcontents
 	\end{frame}
 }
 
-
 \section{Features}
+{
+	\colorlet{bgcolor-03}{primary-color}
+	\colorlet{secondary-color-text}{primary-color-text}
+	\usebeamercolor*{normal text}
+	\begin{frame}
+		\centering\LARGE{Features}
+	\end{frame}
+}
 \begin{frame}
 	\frametitle{Key Features}
 	\framesubtitle{Overview}
@@ -70,6 +69,26 @@
 		\end{itemize}
 		\item Follows material design guidelines
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\sidebysideleft{
+		Left Side
+	}{
+		Right Side
+	}
+	{halign=center, valign=center}
+	{halign=center, valign=center}
+\end{frame}
+
+\begin{frame}
+	\sidebysideright{
+		Left Side
+	}{
+		Right Side
+	}
+	{halign=center, valign=center}
+	{halign=center, valign=center}
 \end{frame}
 
 
@@ -98,7 +117,7 @@
 
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.8\textwidth]{images/tensorflow.pdf}
+		\includegraphics[width=0.8\textwidth]{theme/images/tensorflow.pdf}
 		\source{Google.com}
 	\end{figure}
 

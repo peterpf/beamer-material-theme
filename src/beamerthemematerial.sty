@@ -1,0 +1,132 @@
+\mode<presentation>
+
+% ~~~~~~~~~
+% ~ Theme ~
+% ~~~~~~~~~
+\usepackage{theme/dist/material_colors}
+
+\usepackage{theme/dist/beamerinnerthemematerial}
+\usepackage{theme/dist/beamerouterthemematerial}
+\usepackage{theme/dist/beamercolorthemematerial}
+
+
+% ~~~~~~~~~~~~~~~~
+% ~ Requirements ~
+% ~~~~~~~~~~~~~~~~
+\RequirePackage{tikz}
+\RequirePackage{xcolor, etoolbox, xstring}
+\RequirePackage[many]{tcolorbox}
+\RequirePackage{hyperref}
+\RequirePackage[absolute, overlay]{textpos} % For source/credits of pictures
+
+
+% Customize list appearance
+\newcommand{\myitem}{\item[\textcolor{primary-color-text}\textbullet]}
+
+% Add command to add source for pictures (credits)
+\newcommand{\source}[1]{\begin{textblock*}{4cm}(1cm,8.6cm)
+	\begin{beamercolorbox}[ht=0.5cm,left]{imagesource}
+			\usebeamerfont{imagesource}\usebeamercolor[fg]{imagesource} Source: {#1}
+	\end{beamercolorbox}
+\end{textblock*}}
+
+
+% Create a side by side slide with arguments:
+% #1: left side content
+% #2: right side content
+% #3: left side tcolorbox options
+% #4: right side tcolorbox options
+\newcommand{\sidebysideleft}[4]{
+  \begin{minipage}[t]{0.49\textwidth}
+		\begin{tcolorbox}[
+			enhanced,
+			colback=primary-color,
+			coltext=primary-color-text,
+			sharp corners,
+			boxrule=0mm,
+			toprule=-0.4mm,
+			bottomrule=-1.1mm,
+			leftrule=-10mm,
+			left=6mm, right=6mm, top=2.6mm, bottom=2mm, % text padding
+			fuzzy shadow={0mm}{-0.4mm}{-1mm}{0.2mm}{fill=shadow!40!bgcolor-03},
+			width=\textwidth,
+			height=\textheight, #3]
+			#1
+		  \end{tcolorbox}
+	\end{minipage}
+	\begin{minipage}[t]{0.49\textwidth}
+		\begin{tcolorbox}[
+			empty,
+			coltext=secondary-color-text,
+			sharp corners,
+			boxrule=0mm,
+			toprule=-0.4mm,
+			bottomrule=-1.1mm,
+			rightrule=-15mm,
+			left=6mm, right=6mm, top=2.6mm, bottom=2mm, % text padding
+			width=\textwidth,
+			height=\textheight, #4]
+				#2
+		  \end{tcolorbox}
+	\end{minipage}
+}
+\newcommand{\sidebysideright}[4]{
+  \begin{minipage}[t]{0.49\textwidth}
+		\begin{tcolorbox}[
+			empty,
+			coltext=secondary-color-text,
+			sharp corners,
+			boxrule=0mm,
+			toprule=-0.4mm,
+			bottomrule=-1.1mm,
+			leftrule=-10mm,
+			left=6mm, right=6mm, top=2.6mm, bottom=2mm, % text padding
+			width=\textwidth,
+			height=\textheight, #3]
+			#1
+		  \end{tcolorbox}
+	\end{minipage}
+	\begin{minipage}[t]{0.49\textwidth}
+		\begin{tcolorbox}[
+			enhanced,
+			colback=primary-color,
+			coltext=primary-color-text,
+			sharp corners,
+			boxrule=0mm,
+			toprule=-0.4mm,
+			bottomrule=-1.1mm,
+			rightrule=-15mm,
+			left=6mm, right=6mm, top=2.6mm, bottom=2mm, % text padding
+			fuzzy shadow={0mm}{-0.4mm}{-1mm}{0.2mm}{fill=shadow!40!bgcolor-03},
+			width=\textwidth,
+			height=\textheight, #4]
+				#2
+		  \end{tcolorbox}
+	\end{minipage}
+}
+
+
+% ~~~~~~~~~~~~~~~~~~~~
+% ~ Default Settings ~
+% ~~~~~~~~~~~~~~~~~~~~
+
+\definecolor{primary-color}{HTML}{%PRIMARY_COLOR%}
+\definecolor{primary-color-light}{HTML}{%PRIMARY_COLOR_LIGHT%}
+\definecolor{primary-color-dark}{HTML}{%PRIMARY_COLOR_DARK%}
+\definecolor{primary-color-text}{HTML}{%PRIMARY_TEXT_COLOR%}
+\definecolor{secondary-color}{HTML}{%SECONDARY_COLOR%}
+\definecolor{secondary-color-light}{HTML}{%SECONDARY_COLOR_LIGHT%}
+\definecolor{secondary-color-dark}{HTML}{%SECONDARY_COLOR_DARK%}
+\definecolor{secondary-color-text}{HTML}{%SECONDARY_TEXT_COLOR%}
+\definecolor{accent-color}{HTML}{%ACCENT_COLOR%}
+
+\definecolor{shadow}{HTML}{%BACKGROUND_COLOR_SHADOW%}
+\definecolor{bgcolor-01}{HTML}{%BACKGROUND_COLOR_1%}
+\definecolor{bgcolor-02}{HTML}{%BACKGROUND_COLOR_2%}
+\definecolor{bgcolor-03}{HTML}{%BACKGROUND_COLOR_3%}
+\definecolor{bgcolor-04}{HTML}{%BACKGROUND_COLOR_4%}
+
+
+\setbeamercolor*{alerted text}{fg=accent-color,bg=}
+
+\mode<all>

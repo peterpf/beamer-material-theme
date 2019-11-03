@@ -1,0 +1,40 @@
+% ~~~~~~~~~~~~~~~
+% ~ Inner Theme ~
+% ~~~~~~~~~~~~~~~
+% Defines the typeset of "outer" elements, e.g. Title, navigation symbols
+
+\mode<presentation>
+
+% Frame title
+\defbeamertemplate*{frametitle}{material}[1][]
+{
+  \makebox[\linewidth][c]{%
+  \begin{minipage}[t]{\paperwidth}
+    \raggedright
+    \begin{tcolorbox}[
+      enhanced,
+      colback=primary-color,
+      coltext=primary-color-text,
+      sharp corners,
+      boxrule=0mm,
+      toprule=-0.4mm,
+      left=6mm, right=6mm, top=2.6mm, bottom=2mm, % text padding
+      fuzzy shadow={0mm}{-0.9mm}{0mm}{0.2mm}{shadow!40!bgcolor-03}, % bottomSmall
+      fuzzy shadow={0mm}{-0.8mm}{0mm}{0.2mm}{shadow!20!bgcolor-03}, % bottomBig
+      fuzzy shadow={0mm}{ 0.6mm}{0mm}{0.2mm}{primary-color}, % topSmall
+      fuzzy shadow={0mm}{ 0.5mm}{0mm}{0.2mm}{shadow!20!primary-color}, % topBig
+      width=\paperwidth,
+      height=13mm,
+      boxsep=2mm]
+   \ifx\insertframesubtitle\@empty%
+        {\usebeamerfont{frametitle} \insertframetitle}
+      \else%
+        {\usebeamerfont{frametitle} \insertframetitle}
+        {\usebeamerfont{framesubtitle} \insertframesubtitle}
+      \fi
+    \end{tcolorbox}
+  \end{minipage}%
+  }%
+}
+
+\mode<all>
