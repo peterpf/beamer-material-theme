@@ -2,6 +2,10 @@
 
 ## Development
 
+### Added
+
+- Page number to navigation symbols
+
 ## 2.0.0
 
 ### Added
