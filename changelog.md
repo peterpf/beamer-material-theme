@@ -6,6 +6,10 @@
 
 - Page number to navigation symbols
 
+### Changed
+
+- Caption color
+
 ## 2.0.0
 
 ### Added
