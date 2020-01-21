@@ -1,5 +1,7 @@
 # LaTeX Beamer Material Theme
 
+Demo pdf can be found [here](example.pdf).
+
 ## Setup
 
 ```bash
