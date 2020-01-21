@@ -6,10 +6,10 @@
 sudo apt-get install texlive-latex-extra latexmk
 ```
 
-This will install a full latex distribution. Additionally, `python3` and `pip3` are required, `pip3` can be installed with
+This will install a full latex distribution. Additionally, `python3`, `pip3` and `rake` are required to build the theme
 
 ```bash
-sudo apt-get install python3-pip
+sudo apt-get install python3-pip rake
 ```
 
 ## Include as git submodule
