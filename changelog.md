@@ -9,6 +9,7 @@
 ### Changed
 
 - Caption color
+- `\sidebysideX` layout's first optional argument specifies the ratio of the sides
 
 ## 2.0.0
 
