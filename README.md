@@ -1,15 +1,17 @@
 # LaTeX Beamer Material Theme
 
+Demo pdf can be found [here](example.pdf).
+
 ## Setup
 
 ```bash
 sudo apt-get install texlive-latex-extra latexmk
 ```
 
-This will install a full latex distribution. Additionally, `python3` and `pip3` are required, `pip3` can be installed with
+This will install a full latex distribution. Additionally, `python3`, `pip3` and `rake` are required to build the theme
 
 ```bash
-sudo apt-get install python3-pip
+sudo apt-get install python3-pip rake
 ```
 
 ## Include as git submodule
@@ -54,4 +56,4 @@ This copies the files in `src` into a `dist` folder and configures the theme acc
 
 - Packages that should not be included
   - `graphicx` or `graphics` as they are already included in beamer
-  - `transparency` as it messes with the tikz package's `fill opacity`
+  - `transparency`, `svg` as it messes with the tikz package's `fill opacity` (shadows won't be displayed correctly)

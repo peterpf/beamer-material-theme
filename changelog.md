@@ -2,6 +2,17 @@
 
 ## Development
 
+### Added
+
+- Page number to navigation symbols
+- Example pdf
+
+### Changed
+
+- Caption color
+- `\sidebysideX` layout's first optional argument specifies the ratio of the sides
+- Updated readme + example slides
+
 ## 2.0.0
 
 ### Added

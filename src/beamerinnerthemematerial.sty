@@ -55,4 +55,14 @@
   linkcolor  = accent-color
 }
 
+% Add pagenumber to navigation symbols
+\addtobeamertemplate{navigation symbols}{}{%
+  \usebeamerfont{footline}%
+  \usebeamercolor[fg]{footline}%
+  \hspace{1em}%
+  \raisebox{1.2pt}[0pt][0pt]{
+    \insertframenumber %/\inserttotalframenumber
+  }
+}
+
 \mode<all>

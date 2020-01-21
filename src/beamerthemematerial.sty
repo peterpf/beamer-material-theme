@@ -32,12 +32,13 @@
 
 
 % Create a side by side slide with arguments:
-% #1: left side content
-% #2: right side content
-% #3: left side tcolorbox options
-% #4: right side tcolorbox options
-\newcommand{\sidebysideleft}[4]{
-  \begin{minipage}[t]{0.49\textwidth}
+% #1: optional argument specifying the ratio
+% #2: left side content
+% #3: right side content
+% #4: left side tcolorbox options
+% #5: right side tcolorbox options
+\newcommand{\sidebysideleft}[5][0.49]{
+  \begin{minipage}[t]{#1\textwidth}
 		\begin{tcolorbox}[
 			enhanced,
 			colback=primary-color,
@@ -50,11 +51,12 @@
 			left=6mm, right=6mm, top=2.6mm, bottom=2mm, % text padding
 			fuzzy shadow={0mm}{-0.4mm}{-1mm}{0.2mm}{fill=shadow!40!bgcolor-03},
 			width=\textwidth,
-			height=\textheight, #3]
-			#1
+			height=\textheight, #4]
+			#2
 		  \end{tcolorbox}
 	\end{minipage}
-	\begin{minipage}[t]{0.49\textwidth}
+	\noindent
+	\begin{minipage}[t]{\dimexpr0.99\textwidth - #1\textwidth}
 		\begin{tcolorbox}[
 			empty,
 			coltext=secondary-color-text,
@@ -65,13 +67,13 @@
 			rightrule=-15mm,
 			left=6mm, right=6mm, top=2.6mm, bottom=2mm, % text padding
 			width=\textwidth,
-			height=\textheight, #4]
-				#2
+			height=\textheight, #5]
+			#3
 		  \end{tcolorbox}
 	\end{minipage}
 }
-\newcommand{\sidebysideright}[4]{
-  \begin{minipage}[t]{0.49\textwidth}
+\newcommand{\sidebysideright}[5][0.49]{
+  \begin{minipage}[t]{\dimexpr0.99\textwidth - #1\textwidth}
 		\begin{tcolorbox}[
 			empty,
 			coltext=secondary-color-text,
@@ -82,11 +84,12 @@
 			leftrule=-10mm,
 			left=6mm, right=6mm, top=2.6mm, bottom=2mm, % text padding
 			width=\textwidth,
-			height=\textheight, #3]
-			#1
+			height=\textheight, #4]
+			#2
 		  \end{tcolorbox}
 	\end{minipage}
-	\begin{minipage}[t]{0.49\textwidth}
+	\noindent
+	\begin{minipage}[t]{#1\textwidth}
 		\begin{tcolorbox}[
 			enhanced,
 			colback=primary-color,
@@ -99,8 +102,8 @@
 			left=6mm, right=6mm, top=2.6mm, bottom=2mm, % text padding
 			fuzzy shadow={0mm}{-0.4mm}{-1mm}{0.2mm}{fill=shadow!40!bgcolor-03},
 			width=\textwidth,
-			height=\textheight, #4]
-				#2
+			height=\textheight, #5]
+			#3
 		  \end{tcolorbox}
 	\end{minipage}
 }

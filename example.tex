@@ -7,6 +7,7 @@
 % Theme
 \usepackage{theme/dist/beamerthemematerial}
 
+\usepackage[english]{babel} % Language specific typesetting rules
 \usepackage[utf8x]{inputenc}
 \usepackage[sfdefault]{roboto}
 \usepackage[T1]{fontenc}
@@ -23,11 +24,11 @@
 % ~~~~~~~~~~~~~~~~~~~~~~~
 % ~ Theme configuration ~
 % ~~~~~~~~~~~~~~~~~~~~~~~
+%\beamertemplatenavigationsymbolsempty
 
 \title{Material Design}
 \date{\today}
-\author{Peter Pfaffeneder}
-\institute[Technische Mathematik]
+\author{Max Mustermann}
 
 
 \begin{document}
@@ -49,6 +50,43 @@
 	\end{frame}
 }
 
+\section{Setup}
+\section{Setup}
+{
+	\colorlet{bgcolor-03}{primary-color}
+	\colorlet{secondary-color-text}{primary-color-text}
+	\usebeamercolor*{normal text}
+	\begin{frame}
+		\centering\LARGE{Setup}
+	\end{frame}
+}
+\begin{frame}
+	\frametitle{Setup}
+	\begin{itemize}
+		\item Change into your working directory
+		\item Clone the repo into the \textbf{theme} folder
+		\item Install requirements
+		\item Customize the theme via the \texttt{config.json}
+		\item Build it with \texttt{rake default}
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+	\sidebysideright{
+		\lstinputlisting[basicstyle=\tiny]{theme/config.json.template}
+	}{
+		{\Large Mandatory colors}
+
+		\begin{itemize}
+			\item[\textcolor{primary-color-text}{\textbullet}] \color{primary-color-text}{Primary}
+			\item[\textcolor{primary-color-text}{\textbullet}] \color{primary-color-text}{Secondary}
+			\item[\textcolor{primary-color-text}{\textbullet}] \color{primary-color-text}{Accent}
+			\item[\textcolor{primary-color-text}{\textbullet}] \color{primary-color-text}{Background}
+		\end{itemize}
+	}
+	{halign=center, valign=center}
+	{halign=center, valign=center}
+\end{frame}
+
 \section{Features}
 {
 	\colorlet{bgcolor-03}{primary-color}
@@ -63,17 +101,19 @@
 	\framesubtitle{Overview}
 
 	\begin{itemize}
-		\item Automaticaly determines contrast of text-color
+		\item Auto-generate contrast colors if not specified in config
 		\begin{itemize}
-			\item someSub
+			\item Re-apply style changes with \texttt{rake default}
 		\end{itemize}
 		\item Follows material design guidelines
+		\item Adjustable Side-By-Side layouts
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\sidebysideleft{
-		Left Side
+	\sidebysideleft[0.7]{
+		Adjust ratio of the layout with the optional parameter.
+		Defaults to half of the page.
 	}{
 		Right Side
 	}
@@ -82,26 +122,30 @@
 \end{frame}
 
 \begin{frame}
-	\sidebysideright{
+	\sidebysideright[0.3]{
 		Left Side
 	}{
-		Right Side
+		Right Side\\
+		A very important statement
+		\begin{equation*}
+			a^2 + b^2 = c^2
+		\end{equation*}
 	}
 	{halign=center, valign=center}
 	{halign=center, valign=center}
 \end{frame}
 
 
-\subsection{Usage}
-\begin{frame}
-	\frametitle{Basic Usage}
-	\begin{itemize}
-		\item Available colors are listed in $material\_colors.sty$
-		\item Set background color
-	\end{itemize}
-\end{frame}
-
-\subsubsection{Code}
+\section{Usage}
+{
+	\colorlet{bgcolor-03}{primary-color}
+	\colorlet{secondary-color-text}{primary-color-text}
+	\usebeamercolor*{normal text}
+	\begin{frame}
+		\centering\LARGE{Usage}
+	\end{frame}
+}
+\subsubsection{Slides with code}
 \begin{frame}[fragile=singleslide]{Code}
 	\begin{lstlisting}
 	def someFunction(x):
@@ -111,26 +155,22 @@
 	\end{lstlisting}
 \end{frame}
 
-\subsection{Images}
+\subsection{Images with a source}
 \begin{frame}
 	\frametitle{Including Images}
-
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.8\textwidth]{theme/images/tensorflow.pdf}
 		\source{Google.com}
+		\caption{Tensorflow logo}
 	\end{figure}
-
 \end{frame}
 
-\section{Finish}
+
+\section{The End}
 \begin{frame}
-	\frametitle{Thanks!}
+	\frametitle{The End}
 	\centering{Thanks for all the fish!}
 \end{frame}
 
 \end{document}
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: t
-%%% End:
