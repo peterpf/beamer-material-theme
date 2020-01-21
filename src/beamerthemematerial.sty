@@ -110,13 +110,40 @@
 
 
 % Create a new topic-introduction frame with primary background color and the topic name as title (given as argument)
-\newcommand*{\topicFramePrimary}[1]{
+\newcommand{\topicFramePrimary}[2][\unskip]{
 	{
 		\colorlet{bgcolor-03}{primary-color}
 		\colorlet{secondary-color-text}{primary-color-text}
 		\usebeamercolor*{normal text}
 		\begin{frame}
-			\centering\LARGE{#1}
+			\begin{center}
+				{\LARGE#2}
+				\ifx\hfuzz#1\hfuzz
+				% EMPTY
+				\else
+				\\
+				\vspace{1em}
+				#1%
+				\fi
+			\end{center}
+		\end{frame}
+	}
+}
+\newcommand{\topicFrameSecondary}[2][\unskip]{
+	{
+		\colorlet{bgcolor-03}{secondary-color}
+		\usebeamercolor*{normal text}
+		\begin{frame}
+			\begin{center}
+				{\LARGE#2}
+				\ifx\hfuzz#1\hfuzz
+				% EMPTY
+				\else
+				\\
+				\vspace{1em}
+				#1%
+				\fi
+			\end{center}
 		\end{frame}
 	}
 }
