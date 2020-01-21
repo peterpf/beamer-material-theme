@@ -1,5 +1,11 @@
 # Changelog
 
+## Development
+
+### Added
+
+- ShortCommand `\topicFramePrimary{TOPIC}` which creates a topic-introduction frame
+
 ## 2.0.1
 
 ### Added
