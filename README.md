@@ -1,6 +1,7 @@
 # LaTeX Beamer Material Theme
 
-Demo pdf can be found [here](example.pdf).
+![demo - lightblue](../assets/demo-lightblue.pdf)
+![demo - purple](../assets/demo-purple.pdf)
 
 ## Setup
 
