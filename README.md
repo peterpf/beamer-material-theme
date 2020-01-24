@@ -1,19 +1,15 @@
 # LaTeX Beamer Material Theme
 
 <p align="center">
-<object data="https://raw.githubusercontent.com/peterpf/beamer-material-theme/assets/demo-lightblue.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="https://raw.githubusercontent.com/peterpf/beamer-material-theme/assets/demo-lightblue.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://raw.githubusercontent.com/peterpf/beamer-material-theme/assets/demo-lightblue.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
-</p>
-
-<p align="center">
-<object data="https://raw.githubusercontent.com/peterpf/beamer-material-theme/assets/demo-purple.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="https://raw.githubusercontent.com/peterpf/beamer-material-theme/assets/demo-purple.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://raw.githubusercontent.com/peterpf/beamer-material-theme/assets/demo-purple.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+  <a href="demo/demo-lightblue.pdf">
+    <img src="demo/demo-lightblue-0.png?raw=true">
+  </a>
+  <a href="demo/demo-lightblue.pdf">
+    <img src="demo/demo-lightblue-1.png?raw=true">
+  </a>
+  <a href="demo/demo-lightblue.pdf">
+    <img src="https://github.com/peterpf/beamer-material-theme/blob/develop/demo/demo-lightblue-2.png?raw=true">
+  </a>
 </p>
 
 ## Setup
