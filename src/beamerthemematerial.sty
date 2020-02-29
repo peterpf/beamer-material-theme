@@ -109,6 +109,46 @@
 }
 
 
+% Create a new topic-introduction frame with primary background color and the topic name as title (given as argument)
+\newcommand{\topicFramePrimary}[2][\unskip]{
+	{
+		\colorlet{bgcolor-03}{primary-color}
+		\colorlet{secondary-color-text}{primary-color-text}
+		\usebeamercolor*{normal text}
+		\begin{frame}
+			\begin{center}
+				{\LARGE#2}
+				\ifx\hfuzz#1\hfuzz
+				% EMPTY
+				\else
+				\\
+				\vspace{1em}
+				#1%
+				\fi
+			\end{center}
+		\end{frame}
+	}
+}
+\newcommand{\topicFrameSecondary}[2][\unskip]{
+	{
+		\colorlet{bgcolor-03}{secondary-color}
+		\usebeamercolor*{normal text}
+		\begin{frame}
+			\begin{center}
+				{\LARGE#2}
+				\ifx\hfuzz#1\hfuzz
+				% EMPTY
+				\else
+				\\
+				\vspace{1em}
+				#1%
+				\fi
+			\end{center}
+		\end{frame}
+	}
+}
+
+
 % ~~~~~~~~~~~~~~~~~~~~
 % ~ Default Settings ~
 % ~~~~~~~~~~~~~~~~~~~~
@@ -123,7 +163,7 @@
 \definecolor{secondary-color-text}{HTML}{%SECONDARY_TEXT_COLOR%}
 \definecolor{accent-color}{HTML}{%ACCENT_COLOR%}
 
-\definecolor{shadow}{HTML}{%BACKGROUND_COLOR_SHADOW%}
+\definecolor{shadow}{HTML}{000000}
 \definecolor{bgcolor-01}{HTML}{%BACKGROUND_COLOR_1%}
 \definecolor{bgcolor-02}{HTML}{%BACKGROUND_COLOR_2%}
 \definecolor{bgcolor-03}{HTML}{%BACKGROUND_COLOR_3%}

@@ -1,5 +1,12 @@
 # Changelog
 
+## Development
+
+### Added
+
+- Command `\topicFramePrimary[subtitle]{Title}` which creates a topic-introduction frame with primary color as background
+- Command `\topicFrameSecondary[subtitle]{Title}` which creates a topic-introduction frame with secondary color as background
+
 ## 2.0.1
 
 ### Added

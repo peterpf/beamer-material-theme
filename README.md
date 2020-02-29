@@ -1,6 +1,16 @@
 # LaTeX Beamer Material Theme
 
-Demo pdf can be found [here](example.pdf).
+<p align="center">
+  <a href="demo/demo-lightblue.pdf">
+    <img src="demo/demo-lightblue-0.png?raw=true">
+  </a>
+  <a href="demo/demo-lightblue.pdf">
+    <img src="demo/demo-lightblue-1.png?raw=true">
+  </a>
+  <a href="demo/demo-lightblue.pdf">
+    <img src="https://github.com/peterpf/beamer-material-theme/blob/develop/demo/demo-lightblue-2.png?raw=true">
+  </a>
+</p>
 
 ## Setup
 
