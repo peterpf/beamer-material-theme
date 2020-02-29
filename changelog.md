@@ -1,6 +1,6 @@
 # Changelog
 
-## Development
+## 2.0.2
 
 ### Added
 
