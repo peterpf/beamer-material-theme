@@ -21,3 +21,7 @@ _region_\.tex
 
 dist/
 config.json
+
+.DS_Store
+
+*.vrb

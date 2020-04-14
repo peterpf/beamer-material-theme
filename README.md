@@ -40,7 +40,6 @@ Then do following:
     .
     ├── theme
     |   ├── src/
-    |   ├── dist/
     |   ├── example.tex
     ├── example.tex
     ├── ...
