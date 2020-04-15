@@ -14,14 +14,12 @@
 
 ## Setup
 
-```bash
-sudo apt-get install texlive-latex-extra latexmk
-```
+`LuaTex` is required to compile to compile this presentation.
 
-This will install a full latex distribution. Additionally, `python3`, `pip3` and `rake` are required to build the theme
+This will install a full latex distribution.
 
 ```bash
-sudo apt-get install python3-pip rake
+sudo apt-get install texlive-luatex latexmk
 ```
 
 ## Include as git submodule
@@ -34,7 +32,7 @@ git submodule add git@github.com:peterpf/beamer-material-theme.git theme
 
 Then do following:
 
-- Copy the `example.tex` file from the `theme` folder to the same level as this folder:
+- Copy the `example.tex` file from the `theme` folder to the same level as your root folder:
 
     ```bash
     .
@@ -45,21 +43,19 @@ Then do following:
     ├── ...
     ```
 
-- Use the `example.tex` file as a starting point for our presentation.
+- Open the copied file and look for the line that includes the theme:
 
-## Generating a theme
+  ```latex
+  \usepackage{src/beamerthemematerial} % replace this
+  \usepackage{src/beamerthemematerial} % with this
+  ```
 
-The theme can be tuned via the `config.json` file (make a copy of `config.json.template` and rename it to `config.json`).
-If the complementary colors are not set, they will be calculated based on their respective colors.
-To generate the theme for the given config, do:
+- Use the `example.tex` file as a starting point for your presentation.
 
-```bash
-rake setup // This will create the config.json file
-rake python_setup // only required once to install required python libraries
-rake default // The build task
-```
+## Theme Configuration
 
-This copies the files in `src` into a `dist` folder and configures the theme accordingly.
+Colors can be adapted via the `src/config.lua`.
+If the complementary colors are not set, they will be calculated based on their respective main colors.
 
 ## Important Notes
 
