@@ -57,8 +57,19 @@ Then do following:
 Colors can be adapted via the `src/config.lua`.
 If the complementary colors are not set, they will be calculated based on their respective main colors.
 
+## Building the Theme
+
+```bash
+docker run -v /path/to/tex/document:/doc/ -v /path/to/fonts/:/usr/share/fonts/external/ -t -i thomasweise/texlive lualatex.sh example.tex
+```
+
 ## Important Notes
 
 - Packages that should not be included
   - `graphicx` or `graphics` as they are already included in beamer
   - `transparency`, `svg` as it messes with the tikz package's `fill opacity` (shadows won't be displayed correctly)
+
+## Shoutouts
+
+- [LuaLaTeX Docker](https://github.com/brokenpylons/docker-lualatex)
+- [Lua Colors Library](https://github.com/yuri/lua-colors)
