@@ -3,21 +3,10 @@
 % ~~~~~~~~~
 % ~ Theme ~
 % ~~~~~~~~~
-\usepackage{theme/dist/material_colors}
-
-\usepackage{theme/dist/beamerinnerthemematerial}
-\usepackage{theme/dist/beamerouterthemematerial}
-\usepackage{theme/dist/beamercolorthemematerial}
-
-
-% ~~~~~~~~~~~~~~~~
-% ~ Requirements ~
-% ~~~~~~~~~~~~~~~~
-\RequirePackage{tikz}
-\RequirePackage{xcolor, etoolbox, xstring}
-\RequirePackage[many]{tcolorbox}
-\RequirePackage{hyperref}
-\RequirePackage[absolute, overlay]{textpos} % For source/credits of pictures
+\usepackage{src/material_colors}
+\usepackage{src/beamerinnerthemematerial}
+\usepackage{src/beamerouterthemematerial}
+\usepackage{src/beamercolorthemematerial}
 
 
 % Customize list appearance
@@ -153,21 +142,25 @@
 % ~ Default Settings ~
 % ~~~~~~~~~~~~~~~~~~~~
 
-\definecolor{primary-color}{HTML}{%PRIMARY_COLOR%}
-\definecolor{primary-color-light}{HTML}{%PRIMARY_COLOR_LIGHT%}
-\definecolor{primary-color-dark}{HTML}{%PRIMARY_COLOR_DARK%}
-\definecolor{primary-color-text}{HTML}{%PRIMARY_TEXT_COLOR%}
-\definecolor{secondary-color}{HTML}{%SECONDARY_COLOR%}
-\definecolor{secondary-color-light}{HTML}{%SECONDARY_COLOR_LIGHT%}
-\definecolor{secondary-color-dark}{HTML}{%SECONDARY_COLOR_DARK%}
-\definecolor{secondary-color-text}{HTML}{%SECONDARY_TEXT_COLOR%}
-\definecolor{accent-color}{HTML}{%ACCENT_COLOR%}
+\directlua{
+	local settings = require("src/settings")
+	local Utils = require("src/Utils")
 
-\definecolor{shadow}{HTML}{000000}
-\definecolor{bgcolor-01}{HTML}{%BACKGROUND_COLOR_1%}
-\definecolor{bgcolor-02}{HTML}{%BACKGROUND_COLOR_2%}
-\definecolor{bgcolor-03}{HTML}{%BACKGROUND_COLOR_3%}
-\definecolor{bgcolor-04}{HTML}{%BACKGROUND_COLOR_4%}
+	Utils.defineHTMLColor("primary-color", settings.PrimaryColor)
+	Utils.defineHTMLColor("primary-color-light", settings.PrimaryColorLight)
+	Utils.defineHTMLColor("primary-color-dark", settings.PrimaryColorDark)
+	Utils.defineHTMLColor("primary-color-text", settings.PrimaryTextColor)
+	Utils.defineHTMLColor("secondary-color", settings.SecondaryColor)
+	Utils.defineHTMLColor("secondary-color-light", settings.SecondaryColorLight)
+	Utils.defineHTMLColor("secondary-color-dark", settings.SecondaryColorDark)
+	Utils.defineHTMLColor("secondary-color-text", settings.SecondaryTextColor)
+	Utils.defineHTMLColor("accent-color", settings.AccentColor)
+	Utils.defineHTMLColor("shadow", settings.Shadow)
+	Utils.defineHTMLColor("bgcolor-01", settings.BackgroundColor1)
+	Utils.defineHTMLColor("bgcolor-02", settings.BackgroundColor2)
+	Utils.defineHTMLColor("bgcolor-03", settings.BackgroundColor3)
+	Utils.defineHTMLColor("bgcolor-04", settings.BackgroundColor4)
+}
 
 
 \setbeamercolor*{alerted text}{fg=accent-color,bg=}

@@ -7,6 +7,7 @@
 *.toc
 *.txss
 *.fls
+*.vrb
 
 _region_\.tex
 
@@ -14,10 +15,7 @@ _region_\.tex
 
 *.fls
 .fuse_*
+example.pdf
 
-\.#main\.tex
+.DS_Store
 
-\#main\.tex#
-
-dist/
-config.json

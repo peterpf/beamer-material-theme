@@ -1,6 +1,18 @@
 # Changelog
 
-## Development
+## 3.0.0
+
+### Added
+
+- Dockerization of the build-process
+- `darkpurple` theme to `config.lua`
+
+### Changed
+
+- build-system `rake` to `LuaTeX` (removed python code and replaced it with lua)
+- `config.json` to `config.lua`
+
+## 2.1.0
 
 ### Added
 

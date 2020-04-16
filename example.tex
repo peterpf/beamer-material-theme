@@ -1,30 +1,40 @@
-\documentclass{beamer}
+\documentclass[lualatex]{beamer}
 
 % ~~~~~~~~~~~~~~~~~~~~~
 % ~ Required packages ~
 % ~~~~~~~~~~~~~~~~~~~~~
 
 % Theme
-\usepackage{theme/dist/beamerthemematerial}
-
-\usepackage[english]{babel} % Language specific typesetting rules
-\usepackage[utf8x]{inputenc}
+\usepackage{src/beamerthemematerial}
+% Roboto font
+\usepackage{fontspec}
 \usepackage[sfdefault]{roboto}
-\usepackage[T1]{fontenc}
-\usepackage[absolute,overlay]{textpos} % Required for source below images
+% Language specific typesetting rules
+\usepackage[english]{babel}
+ % Required for source/credits below pictures
+\usepackage[absolute,overlay]{textpos}
+% For colorful layouts
+\usepackage{tikz}
+\usepackage{xcolor, etoolbox, xstring}
+\usepackage[many]{tcolorbox}
 
 
 % ~~~~~~~~~~~~~~~~~~~~~~~
 % ~ Additional packages ~
 % ~~~~~~~~~~~~~~~~~~~~~~~
 \usepackage{csquotes}
-\usepackage{tikz}
 \usepackage{listings}
+
+
+% ~~~~~~~~~~~~~~~~~~~~~
+% ~ Required packages ~
+% ~~~~~~~~~~~~~~~~~~~~~
+\usepackage{hyperref}
 
 % ~~~~~~~~~~~~~~~~~~~~~~~
 % ~ Theme configuration ~
 % ~~~~~~~~~~~~~~~~~~~~~~~
-%\beamertemplatenavigationsymbolsempty
+\beamertemplatenavigationsymbolsempty
 
 \title{Material Design}
 \date{\today}
@@ -45,7 +55,7 @@
 	% Link colors are rendered with `AccentColor'
 	% Change the AccentColor temporarily to match the background
 	\colorlet{accent-color}{secondary-color-text}
-	\begin{frame}{Overview}
+	\begin{frame}{Overviews}
 		\tableofcontents
 	\end{frame}
 }
@@ -64,7 +74,7 @@
 \end{frame}
 \begin{frame}[fragile]
 	\sidebysideright{
-		\lstinputlisting[basicstyle=\tiny]{theme/config.json.template}
+		Configure colors in \texttt{src/config.lua}. Hex color codes are used.
 	}{
 		{\Large Mandatory colors}
 
@@ -86,12 +96,13 @@
 	\framesubtitle{Overview}
 
 	\begin{itemize}
-		\item Auto-generate contrast colors if not specified in config
+		\item Auto-generate contrast colors if not specified in the config
 		\begin{itemize}
-			\item Re-apply style changes with \texttt{rake default}
+			\item Recompile the presentation with \texttt{LuaTeX}
 		\end{itemize}
 		\item Follows material design guidelines
 		\item Adjustable Side-By-Side layouts
+		\item Isolated build-process -- no local dependencies except docker
 	\end{itemize}
 \end{frame}
 
@@ -139,7 +150,7 @@
 	\frametitle{Including Images}
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.8\textwidth]{theme/images/tensorflow.pdf}
+		\includegraphics[width=0.8\textwidth]{images/tensorflow.pdf}
 		\source{Google.com}
 		\caption{Tensorflow logo}
 	\end{figure}
