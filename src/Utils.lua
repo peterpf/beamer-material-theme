@@ -68,11 +68,4 @@ function Utils.defineHTMLColor(colorName, hexColor)
   tex.sprint("\\definecolor{",colorName, "}{HTML}{",hexColor, "}")
 end
 
-function Utils.getRootDir(deploymentLevel)
-  if deploymentLevel == "dev" then
-    return "src/"
-  end
-  return "theme/src"
-end
-
 return Utils

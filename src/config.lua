@@ -1,7 +1,5 @@
 local Utils = require("src/Utils")
 
-local DEPLOYMENT_LEVEL = "dev"
-
 local PrimaryColor = "2196f3"
 local PrimaryColorLight -- = "87fbff"
 local PrimaryColorDark -- = "002f8c"
@@ -43,7 +41,6 @@ if SecondaryTextColor == nil then
 end
 
 return {
-    DeploymentLevel = DEPLOYMENT_LEVEL;
     PrimaryColor = PrimaryColor;
     PrimaryColorLight = PrimaryColorLight;
     PrimaryColorDark = PrimaryColorDark;

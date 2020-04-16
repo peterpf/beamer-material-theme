@@ -14,13 +14,17 @@
 
 ## Setup
 
-`LuaTex` is required to compile to compile this presentation.
+`LuaTex` and the `roboto` font are required to compile the presentation.
 
-This will install a full latex distribution.
+As an alternative, use this `docker` container to produce a pdf file.
+Execute following commands in the directory of the cloned repository:
 
 ```bash
-sudo apt-get install texlive-luatex latexmk
+docker build . -t latex-beamer
+docker run -v /path/to/presentation/:/doc/ -t -i latex-beamer lualatex.sh example.tex
 ```
+
+Replace `example.tex` with the main tex file.
 
 ## Include as git submodule
 
@@ -32,7 +36,16 @@ git submodule add git@github.com:peterpf/beamer-material-theme.git theme
 
 Then do following:
 
-- Copy the `example.tex` file from the `theme` folder to the same level as your root folder:
+- Open [src/beamerthemematerial.sty](src/beamerthemematerial.sty) and adapt the paths for the styles:
+
+  ```latex
+  \usepackage{theme/src/material_colors}
+  \usepackage{theme/src/beamerinnerthemematerial}
+  \usepackage{theme/src/beamerouterthemematerial}
+  \usepackage{theme/src/beamercolorthemematerial}
+  ```
+
+- Copy `example.tex` from `src` folder to `theme` folder:
 
     ```bash
     .
@@ -50,18 +63,13 @@ Then do following:
   \usepackage{src/beamerthemematerial} % with this
   ```
 
-- Use the `example.tex` file as a starting point for your presentation.
+- Use the copied file as a starting point for your presentation.
+- Execute the docker command mentioned above in the project root folder.
 
 ## Theme Configuration
 
 Colors can be adapted via the `src/config.lua`.
 If the complementary colors are not set, they will be calculated based on their respective main colors.
-
-## Building the Theme
-
-```bash
-docker run -v /path/to/tex/document:/doc/ -v /path/to/fonts/:/usr/share/fonts/external/ -t -i thomasweise/texlive lualatex.sh example.tex
-```
 
 ## Important Notes
 
@@ -71,5 +79,5 @@ docker run -v /path/to/tex/document:/doc/ -v /path/to/fonts/:/usr/share/fonts/ex
 
 ## Shoutouts
 
-- [LuaLaTeX Docker](https://github.com/brokenpylons/docker-lualatex)
+- [docker-texlive](https://github.com/thomasWeise/docker-texlive)
 - [Lua Colors Library](https://github.com/yuri/lua-colors)
