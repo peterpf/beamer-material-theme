@@ -143,23 +143,23 @@
 % ~~~~~~~~~~~~~~~~~~~~
 
 \directlua{
-	local config = require("src/config")
+	local settings = require("src/settings")
 	local Utils = require("src/Utils")
 
-	Utils.defineHTMLColor("primary-color", config.PrimaryColor)
-	Utils.defineHTMLColor("primary-color-light", config.PrimaryColorLight)
-	Utils.defineHTMLColor("primary-color-dark", config.PrimaryColorDark)
-	Utils.defineHTMLColor("primary-color-text", config.PrimaryTextColor)
-	Utils.defineHTMLColor("secondary-color", config.SecondaryColor)
-	Utils.defineHTMLColor("secondary-color-light", config.SecondaryColorLight)
-	Utils.defineHTMLColor("secondary-color-dark", config.SecondaryColorDark)
-	Utils.defineHTMLColor("secondary-color-text", config.SecondaryTextColor)
-	Utils.defineHTMLColor("accent-color", config.AccentColor)
-	Utils.defineHTMLColor("shadow", config.Shadow)
-	Utils.defineHTMLColor("bgcolor-01", config.BackgroundColor1)
-	Utils.defineHTMLColor("bgcolor-02", config.BackgroundColor2)
-	Utils.defineHTMLColor("bgcolor-03", config.BackgroundColor3)
-	Utils.defineHTMLColor("bgcolor-04", config.BackgroundColor4)
+	Utils.defineHTMLColor("primary-color", settings.PrimaryColor)
+	Utils.defineHTMLColor("primary-color-light", settings.PrimaryColorLight)
+	Utils.defineHTMLColor("primary-color-dark", settings.PrimaryColorDark)
+	Utils.defineHTMLColor("primary-color-text", settings.PrimaryTextColor)
+	Utils.defineHTMLColor("secondary-color", settings.SecondaryColor)
+	Utils.defineHTMLColor("secondary-color-light", settings.SecondaryColorLight)
+	Utils.defineHTMLColor("secondary-color-dark", settings.SecondaryColorDark)
+	Utils.defineHTMLColor("secondary-color-text", settings.SecondaryTextColor)
+	Utils.defineHTMLColor("accent-color", settings.AccentColor)
+	Utils.defineHTMLColor("shadow", settings.Shadow)
+	Utils.defineHTMLColor("bgcolor-01", settings.BackgroundColor1)
+	Utils.defineHTMLColor("bgcolor-02", settings.BackgroundColor2)
+	Utils.defineHTMLColor("bgcolor-03", settings.BackgroundColor3)
+	Utils.defineHTMLColor("bgcolor-04", settings.BackgroundColor4)
 }
 
 

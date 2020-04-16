@@ -1,6 +1,8 @@
 local ColorUtils = require("lib/colors")
 local Utils = {}
 
+-- Convert hex color representation to {r, g, b}, all values are in range 0-1.
+-- Source: Somewhere on stackoverflow
 function hex2rgb (hex)
   local hex = hex:gsub("#","")
   if hex:len() == 3 then
@@ -36,12 +38,14 @@ function rgb2hex(rgb)
 	return hexadecimal
 end
 
+-- Convert a hex string to a Color object
 function hex2color(hex)
   local r,g,b = hex2rgb(hex)
   local h,s,l = ColorUtils.rgb_to_hsl(r,g,b)
   return ColorUtils.new(h,s,l)
 end
 
+-- Represent a Color object in hex
 function color2hex(color)
   local nr, ng, nb = ColorUtils.hsl_to_rgb(color.H, color.S, color.L)
   return rgb2hex({nr*255, ng*255, nb*255})
@@ -64,8 +68,41 @@ function Utils.getContrastingColor(hexColor, brighterHexColor, darkerHexColor)
   end
 end
 
+-- Return the corresponding LaTeX code to define a new HTML color
 function Utils.defineHTMLColor(colorName, hexColor)
   tex.sprint("\\definecolor{",colorName, "}{HTML}{",hexColor, "}")
+end
+
+-- Perform checks on the colors and define missing optional colors.
+function Utils.checkColors(config)
+  -- Factors by which colors get brightened/darkened
+  local FACTOR_BRIGHTEN = 1.8
+  local FACTOR_DARKEN = 0.4
+
+  -- Fallback colors if TextColors are not defined
+  local BrightTextColor = Utils.changeColorBrightness(config.PrimaryColor, FACTOR_BRIGHTEN)
+  local DarkTextColor = Utils.changeColorBrightness(config.PrimaryColor, FACTOR_BRIGHTEN)
+
+  -- Define optional colors if they are missing
+  if config.PrimaryColorLight == nil then
+    config.PrimaryColorLight = Utils.changeColorBrightness(config.PrimaryColor, FACTOR_DARKEN)
+  end
+  if config.PrimaryColorDark == nil then
+    config.PrimaryColorDark = Utils.changeColorBrightness(config.PrimaryColor, FACTOR_DARKEN)
+  end
+  if config.PrimaryTextColor == nil then
+    config.PrimaryTextColor = Utils.getContrastingColor(config.PrimaryColor, BrightTextColor, DarkTextColor)
+  end
+  if config.SecondaryColorLight == nil then
+    config.SecondaryColorLight = Utils.changeColorBrightness(config.SecondaryColor, FACTOR_BRIGHTEN)
+  end
+  if config.SecondaryColorDark == nil then
+    config.SecondaryColorDark = Utils.changeColorBrightness(config.SecondaryColor, FACTOR_DARKEN)
+  end
+  if config.SecondaryTextColor == nil then
+    config.SecondaryTextColor = Utils.getContrastingColor(config.SecondaryColor, BrightTextColor, DarkTextColor)
+  end
+  return config
 end
 
 return Utils

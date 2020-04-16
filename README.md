@@ -1,14 +1,17 @@
 # LaTeX Beamer Material Theme
 
 <p align="center">
-  <a href="demo/demo-lightblue.pdf">
-    <img src="demo/demo-lightblue-0.png?raw=true">
+  <a href="demo/lightblue.pdf">
+    <img src="demo/lightblue-01.png?raw=true">
   </a>
-  <a href="demo/demo-lightblue.pdf">
-    <img src="demo/demo-lightblue-1.png?raw=true">
+  <a href="demo/lightblue.pdf">
+    <img src="demo/lightblue-02.png?raw=true">
   </a>
-  <a href="demo/demo-lightblue.pdf">
-    <img src="https://github.com/peterpf/beamer-material-theme/blob/develop/demo/demo-lightblue-2.png?raw=true">
+  <a href="demo/darkpurple.pdf">
+    <img src="demo/darkpurple-02.png?raw=true">
+  </a>
+  <a href="demo/lightblue.pdf">
+    <img src="https://github.com/peterpf/beamer-material-theme/blob/develop/demo/lightblue-03.png?raw=true">
   </a>
 </p>
 
@@ -16,7 +19,7 @@
 
 `LuaTex` and the `roboto` font are required to compile the presentation.
 
-As an alternative, use this `docker` container to produce a pdf file.
+As an alternative, use the included `docker` container to produce a pdf file.
 Execute following commands in the directory of the cloned repository:
 
 ```bash
@@ -45,7 +48,7 @@ Then do following:
   \usepackage{theme/src/beamercolorthemematerial}
   ```
 
-- Copy `example.tex` from `src` folder to `theme` folder:
+- Copy [example.tex](example.tex) from `src` folder to `theme` folder:
 
     ```bash
     .
@@ -68,8 +71,15 @@ Then do following:
 
 ## Theme Configuration
 
-Colors can be adapted via the `src/config.lua`.
-If the complementary colors are not set, they will be calculated based on their respective main colors.
+Colors can be adapted via the [config.lua](src/config.lua).
+Undefined complementary colors will be calculated based on their respective main colors.
+Predefined themes are already there, choose the one you want by changing the return value of [config.lua](src/config.lua), or create your own:
+
+```lua
+return lightBlue
+-- or
+return darkPurple
+```
 
 ## Important Notes
 
