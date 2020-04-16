@@ -21,7 +21,7 @@ Execute following commands in the directory of the cloned repository:
 
 ```bash
 docker build . -t latex-beamer
-docker run -v /path/to/presentation/:/doc/ -t -i latex-beamer lualatex.sh example.tex
+docker run -v $PWD:/data/ latex-beamer example.tex
 ```
 
 Replace `example.tex` with the main tex file.
@@ -79,5 +79,6 @@ If the complementary colors are not set, they will be calculated based on their 
 
 ## Shoutouts
 
+- [docker-luatex](https://github.com/brokenpylons/docker-lualatex)
 - [docker-texlive](https://github.com/thomasWeise/docker-texlive)
 - [Lua Colors Library](https://github.com/yuri/lua-colors)
