@@ -53,6 +53,10 @@ Then do following:
   }
   ```
 
+- Adapt the references to other files in
+  - [src/settings.lua](src/settings.lua)
+  - [src/Utils.lua](src/Utils.lua)
+
 - Copy [example.tex](example.tex) from `src` folder to `theme` folder:
 
     ```bash
