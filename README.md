@@ -46,7 +46,16 @@ Then do following:
   \usepackage{theme/src/beamerinnerthemematerial}
   \usepackage{theme/src/beamerouterthemematerial}
   \usepackage{theme/src/beamercolorthemematerial}
+
+  \directlua {
+    local settings = require("theme/src/settings")
+    local Utils = require("theme/src/Utils")
+  }
   ```
+
+- Adapt the references to other files in
+  - [src/settings.lua](src/settings.lua)
+  - [src/Utils.lua](src/Utils.lua)
 
 - Copy [example.tex](example.tex) from `src` folder to `theme` folder:
 
@@ -63,7 +72,7 @@ Then do following:
 
   ```latex
   \usepackage{src/beamerthemematerial} % replace this
-  \usepackage{src/beamerthemematerial} % with this
+  \usepackage{theme/src/beamerthemematerial} % with this
   ```
 
 - Use the copied file as a starting point for your presentation.
