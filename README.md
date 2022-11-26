@@ -111,7 +111,7 @@ The following extensions are necessary:
 - [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 - [LaTeX Utilities](https://marketplace.visualstudio.com/items?itemName=tecosaur.latex-utilities)
 
-Configure the extensions by opening  `Command Palete -> User Settings (JSON)` and add or update the following lines:
+Configure the extensions by opening  `Command Palete -> Open Default Settings (JSON)` and add or update the following lines:
 
 ```json
 "latex-workshop.latex.tools": [
