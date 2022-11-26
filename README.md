@@ -128,6 +128,19 @@ Configure the extensions by opening  `Command Palete -> User Settings (JSON)` an
     ],
     "env": {}
   },
+  {
+    "name": "lualatexmk",
+    "command": "latexmk",
+    "args": [
+      "-synctex=1",
+      "-interaction=nonstopmode",
+      "-file-line-error",
+      "-lualatex",
+      "-outdir=%OUTDIR%",
+      "%DOC%"
+    ],
+    "env": {}
+  },
 ]
 
 "latex-workshop.latex.recipes": [
@@ -135,6 +148,12 @@ Configure the extensions by opening  `Command Palete -> User Settings (JSON)` an
     "name": "latexmk (xelatex)",
     "tools": [
       "xelatexmk"
+    ]
+  },
+  {
+    "name": "latexmk (lualatex)",
+    "tools": [
+      "lualatexmk"
     ]
   },
 ]
