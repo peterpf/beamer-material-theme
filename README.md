@@ -1,5 +1,7 @@
 # LaTeX Beamer Material Theme
 
+A beamer theme inspired by Google's material design with adjustable colors and side-by-side layout.
+
 <p align="center">
   <a href="demo/lightblue.pdf">
     <img src="demo/lightblue-01.png?raw=true">
@@ -15,31 +17,42 @@
   </a>
 </p>
 
-## Setup
+## Installation
 
+Prerequisite:
 `LuaTex` and the `roboto` font are required to compile the presentation.
 
-As an alternative, use the included `docker` container to produce a pdf file.
-Execute following commands in the directory of the cloned repository:
+Download the repository into your working directory and rename it to `theme`.
+Continue with the following steps:
 
-```bash
-docker build . -t latex-beamer
-docker run -v $PWD:/data/ latex-beamer example.tex
-```
+- Copy [example.tex](example.tex) from `theme/src` folder to the same levels as the `theme` folder. Do the same for the `theme/images` folder. Your working directory should look like this:
 
-Replace `example.tex` with the main tex file.
+    ```bash
+    .
+    ├── images/
+    ├── theme/
+    |   ├── src/
+    |   ├── example.tex
+    ├── example.tex
+    ├── ...
+    ```
 
-## Include as git submodule
+- Open the `example.tex` file and adapt:
 
-Go to your working directory and clone the `beamer-material-theme` repository into the folder `theme` with
+  - References to the theme:
 
-```bash
-git submodule add git@github.com:peterpf/beamer-material-theme.git theme
-```
+  ```latex
+  \usepackage{src/beamerthemematerial} % replace this
+  \usepackage{theme/src/beamerthemematerial} % with this
+  ```
 
-Then do following:
+  - Refences to the `images` folder:
 
-- Open [src/beamerthemematerial.sty](src/beamerthemematerial.sty) and adapt the paths for the styles:
+    ```latex
+    \includegraphics[width=0.8\textwidth]{theme/images/tensorflow.pdf}
+    ```
+
+- Open [theme/src/beamerthemematerial.sty](src/beamerthemematerial.sty) and adapt the paths for the styles:
 
   ```latex
   \usepackage{theme/src/material_colors}
@@ -53,30 +66,30 @@ Then do following:
   }
   ```
 
-- Adapt the references to other files in
-  - [src/settings.lua](src/settings.lua)
-  - [src/Utils.lua](src/Utils.lua)
+- Open [theme/src/settings.lua](src/settings.lua) and adapt the references:
 
-- Copy [example.tex](example.tex) from `src` folder to `theme` folder:
-
-    ```bash
-    .
-    ├── theme
-    |   ├── src/
-    |   ├── example.tex
-    ├── example.tex
-    ├── ...
-    ```
-
-- Open the copied file and look for the line that includes the theme:
-
-  ```latex
-  \usepackage{src/beamerthemematerial} % replace this
-  \usepackage{theme/src/beamerthemematerial} % with this
+  ```lua
+  local Utils = require("theme/src/Utils")
+  local config = require("theme/src/config")
   ```
 
-- Use the copied file as a starting point for your presentation.
-- Execute the docker command mentioned above in the project root folder.
+- Open [theme/src/Utils.lua](src/Utils.lua) and adapt the references:
+
+  ```lua
+  local ColorUtils = require("theme/lib/colors")
+  ```
+
+Use the `example.tex` file as a starting point for your presentation (you can rename it to whatever you'd like).
+
+## Include as git submodule
+
+Go to your working directory and clone the `beamer-material-theme` repository into the folder `theme` with
+
+```bash
+git submodule add git@github.com:peterpf/beamer-material-theme.git theme
+```
+
+Follow the steps described in the *Installation* section.
 
 ## Theme Configuration
 
@@ -89,6 +102,61 @@ return lightBlue
 -- or
 return darkPurple
 ```
+
+## Working with Visual Studio Code
+
+It is possible to automatically build the beamer presentation with Visual Studio Code (VSCode).
+The following extensions are necessary:
+
+- [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
+- [LaTeX Utilities](https://marketplace.visualstudio.com/items?itemName=tecosaur.latex-utilities)
+
+Configure the extensions by opening  `Command Palete -> User Settings (JSON)` and add or update the following lines:
+
+```json
+"latex-workshop.latex.tools": [
+  {
+    "name": "xelatexmk",
+    "command": "latexmk",
+    "args": [
+      "-synctex=1",
+      "-interaction=nonstopmode",
+      "-file-line-error",
+      "-xelatex",
+      "-outdir=%OUTDIR%",
+      "%DOC%"
+    ],
+    "env": {}
+  },
+]
+
+"latex-workshop.latex.recipes": [
+  {
+    "name": "latexmk (xelatex)",
+    "tools": [
+      "xelatexmk"
+    ]
+  },
+]
+```
+
+After saving the `User Settings (JSON)` file you should be able to see a meny entry in the LaTeX Workshop tool:
+
+![Viewing the build recipes of the LaTeX Workshop extension](/images/latex-workshop-extension-view.png)
+
+## Compiling the presentation with docker
+
+If you don't want to install dependencies and rather use `docker` to produce a PDF file from your LaTeX file, follow the instructions below.
+
+Execute following commands in the directory of the cloned repository:
+
+```bash
+docker build . -t latex-beamer
+docker run -v $PWD:/data/ latex-beamer example.tex
+```
+
+Replace `example.tex` with your presentation's tex file.
+Execute the docker command mentioned above in the project root folder.
 
 ## Important Notes
 
