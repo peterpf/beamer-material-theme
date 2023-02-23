@@ -8,6 +8,7 @@ RUN apt-get update && \
     liburi-encode-perl \
     gnupg \
     wget \
+    ca-certificates \
     xzdec && \
     rm -rf /var/lib/apt/lists/*
 
